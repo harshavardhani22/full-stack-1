@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Full-Stack Dev — Demo Site</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <h1 class="logo">FullStack<span>Dev</span></h1>
+      <nav class="nav">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#services">Services</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-inner">
+        <h2>Build modern web apps — front to back</h2>
+        <p>A small demo site showing structure, layout and a contact form. Great starter template for full-stack projects.</p>
+        <a class="btn" href="#contact">Get in touch</a>
+      </div>
+    </section>
+
+    <section id="about" class="container about">
+      <h3>About</h3>
+      <p>This demo shows a simple layout, responsive grid and a contact form. Replace sections and backend as needed.</p>
+    </section>
+
+    <section id="services" class="container cards">
+      <h3>Services</h3>
+      <div class="grid">
+        <article class="card">
+          <h4>Frontend</h4>
+          <p>React / Vue / HTML5, CSS3, accessibility & responsive design.</p>
+        </article>
+        <article class="card">
+          <h4>Backend</h4>
+          <p>Node.js, Express, REST APIs, authentication and databases.</p>
+        </article>
+        <article class="card">
+          <h4>Deployment</h4>
+          <p>CI/CD, Docker, Cloud hosting and monitoring.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="projects" class="container projects">
+      <h3>Projects</h3>
+      <div class="grid">
+        <div class="project">
+          <h4>Project A</h4>
+          <p>Full-stack todo app with JWT auth and persistent DB.</p>
+        </div>
+        <div class="project">
+          <h4>Project B</h4>
+          <p>Realtime chat with WebSockets and Redis.</p>
+        </div>
+        <div class="project">
+          <h4>Project C</h4>
+          <p>Analytics dashboard with charts and CSV exports.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="container contact">
+      <h3>Contact</h3>
+      <p>Try the form below. (Demo only — to save submissions, add a backend.)</p>
+
+      <!-- Demo form: action points to test.txt for illustration.
+           To actually save data: handle POST on server-side (for example Express or Flask). -->
+      <form class="contact-form" action="test.txt" method="post">
+        <label>
+          Name
+          <input type="text" name="name" required />
+        </label>
+        <label>
+          Email
+          <input type="email" name="email" required />
+        </label>
+        <label>
+          Message
+          <textarea name="message" rows="5" required></textarea>
+        </label>
+        <div class="form-actions">
+          <button type="submit" class="btn">Send</button>
+          <button type="reset" class="btn alt">Reset</button>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© <span id="year"></span> FullStackDev — Demo. Built for learning.</p>
+    </div>
+  </footer>
+
+  <script>
+    // small nicety: update year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // optional: intercept form submit and show a friendly message (no backend)
+    const form = document.querySelector('.contact-form');
+    form.addEventListener('submit', function (e) {
+      // If the browser actually submits to test.txt this will run after navigation.
+      // We'll prevent default to keep demo in-page and show a message.
+      e.preventDefault();
+      const name = form.name.value || 'Anonymous';
+      const email = form.email.value || 'no-email';
+      const msg = form.message.value || '';
+      alert('Thanks, ' + name + '! (This demo does not send data to a server.)\n\nPreview:\n' + email + '\n' + msg);
+      form.reset();
+    });
+  </script>
+</body>
+</html>
